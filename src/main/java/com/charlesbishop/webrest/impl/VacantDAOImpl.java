@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.charlesbishop.webrest.dao.VacantDAO;
-import com.charlesbishop.webrest.model.Crime;
 import com.charlesbishop.webrest.model.Vacant;
 
 public class VacantDAOImpl implements VacantDAO {

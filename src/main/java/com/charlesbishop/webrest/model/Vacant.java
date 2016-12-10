@@ -1,7 +1,6 @@
 package com.charlesbishop.webrest.model;
 
 import java.sql.Date;
-import java.util.regex.Matcher;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
