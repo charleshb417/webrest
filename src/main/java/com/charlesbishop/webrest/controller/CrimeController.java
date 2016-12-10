@@ -26,4 +26,17 @@ public class CrimeController {
         return returnString;
     }
 	
+	@RequestMapping(value = "/rest/crimes/{crimeID}", method = RequestMethod.GET)
+    public @ResponseBody String getById() {
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
+//		CrimeDAO crimeDAO = context.getBean(CrimeDAO.class);
+//		
+//		List<Crime> list = crimeDAO.list();
+//		String returnString = CRUDControllerHelper.generateJSONArray(list);
+//		context.close();
+//
+//        return returnString;
+		return null;
+    }
+	
 }

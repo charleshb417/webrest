@@ -40,10 +40,10 @@
 	</bean>
 
 	
-	<bean id="crimeDAO" class="com.charlesbishop.webrest.impl.CrimeDAOImpl">
+	<bean id="crimeDAO" class="com.charlesbishop.webrest.dao.CrimeDAOImpl">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
-	<bean id="vacantDAO" class="com.charlesbishop.webrest.impl.VacantDAOImpl">
+	<bean id="vacantDAO" class="com.charlesbishop.webrest.dao.VacantDAOImpl">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 </beans>
