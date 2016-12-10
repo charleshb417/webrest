@@ -1,6 +1,7 @@
 package com.charlesbishop.webrest.model;
 
 import java.sql.Date;
+import java.util.regex.Matcher;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Vacant")
-public class Vacant {
+public class Vacant extends ObjModel {
 	@Id
 	@Column(name="ReferenceID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -100,12 +101,15 @@ public class Vacant {
 	
 	@Override
 	public String toString() {
-		return "Vacant [referenceID=" + referenceID + ", block=" + block
-				+ ", lot=" + lot + ", buildingAddress=" + buildingAddress
-				+ ", noticeDate=" + noticeDate + ", neighborhood="
-				+ neighborhood + ", policeDistrict=" + policeDistrict
-				+ ", councilDistrict=" + councilDistrict + ", location="
-				+ location + "]";
+		return "{\"referenceID\": \"" + referenceID + "\","
+		+"\"block\": \"" + block + "\","
+		+"\"lot\": \"" + lot + "\","
+		+"\"buildingAddress\": \"" + buildingAddress + "\","		
+		+"\"noticeDate\": \"" + noticeDate + "\","
+		+"\"neighborhood\": \"" + neighborhood + "\","
+		+"\"policeDistrict\": \"" + policeDistrict + "\","
+		+"\"councilDistrict\": " + councilDistrict + ","
+		+"\"location\": \"" + location + "\"}";
 	}
 	
 }

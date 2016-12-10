@@ -14,4 +14,5 @@ public interface BaseDAO<T> {
 	
 	public List<T> list();
 	
+	public Class getModelClass();
 }

@@ -1,6 +1,7 @@
 package com.charlesbishop.webrest.model;
 
 import java.sql.Date;
+import java.util.regex.Matcher;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Crime")
-public class Crime {
+public class Crime extends ObjModel {
 	@Id
 	@Column(name="CrimeID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -91,10 +92,17 @@ public class Crime {
 	
 	@Override
 	public String toString() {
-		return "Crime [crimeID=" + crimeID + ", crimeDate=" + crimeDate
-				+ ", crimeCode=" + crimeCode + ", location=" + location
-				+ ", description=" + description + ", weapon=" + weapon
-				+ ", district=" + district + ", neighborhood=" + neighborhood
-				+ "]";
+		return "{\"crimeID\": " + crimeID + ","
+				+"\"crimeDate\": \"" + crimeDate + "\","
+				+"\"crimeCode\": \"" + crimeCode + "\","
+				+"\"location\": \"" + location + "\","
+				
+				//It is possible that a quotation can be in the description, so escape all double quotes
+				+"\"description\": \"" + description.replaceAll("\"", Matcher.quoteReplacement("\\\"")) + "\","
+				
+				+"\"weapon\": \"" + weapon + "\","
+				+"\"district\": \"" + district + "\","
+				+"\"neighborhood\": \"" + neighborhood + "\"}";
 	}
+
 }

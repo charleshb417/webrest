@@ -33,4 +33,8 @@ public class CrimeDAOImpl implements CrimeDAO {
 		return personList;
 	}
 
+	public Class getModelClass() {
+		return Crime.class;
+	}
+
 }

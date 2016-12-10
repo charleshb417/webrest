@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.charlesbishop.webrest.dao.VacantDAO;
+import com.charlesbishop.webrest.model.Crime;
 import com.charlesbishop.webrest.model.Vacant;
 
 public class VacantDAOImpl implements VacantDAO {
@@ -31,6 +32,10 @@ public class VacantDAOImpl implements VacantDAO {
 		List<Vacant> vacantList = session.createQuery("from Vacant").list();
 		session.close();
 		return vacantList;
+	}
+	
+	public Class getModelClass() {
+		return Vacant.class;
 	}
 
 }
