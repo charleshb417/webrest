@@ -1,11 +1,9 @@
 package com.charlesbishop.webrest.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,17 +11,31 @@ import javax.persistence.Table;
 @Table(name="Vacant")
 public class Vacant extends ObjModel {
 	@Id
-	@Column(name="ReferenceID")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	
+	@Column(name="referenceID", unique=true)
 	private String referenceID;
+	
+	@Column(name="block")
 	private String block;
+	
+	@Column(name="lot")
 	private String lot;
+	
+	@Column(name="buildingAddress")
 	private String buildingAddress;
+	
+	@Column(name="noticeDate")
 	private Date noticeDate;
+	
+	@Column(name="neighborhood")
 	private String neighborhood;
+	
+	@Column(name="policeDistrict")
 	private String policeDistrict;
+	
+	@Column(name="councilDistrict")
 	private int councilDistrict;
+	
+	@Column(name="location")
 	private String location;
 	
 	public String getReferenceID() {

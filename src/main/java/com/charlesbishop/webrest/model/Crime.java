@@ -1,6 +1,6 @@
 package com.charlesbishop.webrest.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.regex.Matcher;
 
 import javax.persistence.Column;
@@ -14,16 +14,29 @@ import javax.persistence.Table;
 @Table(name="Crime")
 public class Crime extends ObjModel {
 	@Id
-	@Column(name="CrimeID")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="crimeID")
 	private int crimeID;
+	
+	@Column(name="crimeDate")
 	private Date crimeDate;
+	
+	@Column(name="crimeCode")
 	private String crimeCode;
+	
+	@Column(name="location")
 	private String location;
+	
+	@Column(name="description")
 	private String description;
+	
+	@Column(name="weapon")
 	private String weapon;
+	
+	@Column(name="district")
 	private String district;
+	
+	@Column(name="neighborhood")
 	private String neighborhood;
 	
 	public int getCrimeID() {
