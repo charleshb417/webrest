@@ -2,6 +2,12 @@ package com.charlesbishop.webrest.controller;
 
 import com.charlesbishop.webrest.model.ObjModel;
 
+/*
+ * This interface provides the basic required REST operations
+ * 
+ * T is a model class
+ * U is the class for the Primary Key
+ */
 public interface BaseController<T extends ObjModel, U> {
 
 	public String list();

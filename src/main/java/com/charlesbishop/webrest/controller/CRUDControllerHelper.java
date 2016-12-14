@@ -5,6 +5,9 @@ import java.util.regex.Matcher;
 
 import com.charlesbishop.webrest.model.ObjModel;
 
+/*
+ * This utility class provides helper methods for REST api classes
+ */
 public class CRUDControllerHelper {
 	
 	public static final String EMPTY_JSON_OBJECT = "{}";
