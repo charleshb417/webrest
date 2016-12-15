@@ -28,6 +28,7 @@
 			<list>
 				<value>com.charlesbishop.webrest.model.Crime</value>
 				<value>com.charlesbishop.webrest.model.Vacant</value>
+				<value>com.charlesbishop.webrest.model.AppUser</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -44,6 +45,9 @@
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 	<bean id="vacantDAO" class="com.charlesbishop.webrest.dao.VacantDAOImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+	<bean id="appUserDAO" class="com.charlesbishop.webrest.dao.AppUserDAO">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 </beans>
