@@ -39,7 +39,6 @@ public class VacantDAOImpl implements VacantDAO {
 		return Vacant.class;
 	}
 
-	@Override
 	public Vacant get(String id) {
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -49,7 +48,6 @@ public class VacantDAOImpl implements VacantDAO {
 		return (Vacant) vacant;
 	}
 	
-	@Override
 	public boolean update(Vacant object) {
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -59,7 +57,6 @@ public class VacantDAOImpl implements VacantDAO {
 		return true;
 	}
 
-	@Override
 	public boolean delete(Vacant object) {
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();

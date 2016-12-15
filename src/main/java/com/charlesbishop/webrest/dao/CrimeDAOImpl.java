@@ -39,7 +39,6 @@ public class CrimeDAOImpl implements CrimeDAO {
 		return Crime.class;
 	}
 
-	@Override
 	public Crime get(Integer id) {
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -49,7 +48,6 @@ public class CrimeDAOImpl implements CrimeDAO {
 		return (Crime) crime;
 	}
 
-	@Override
 	public boolean update(Crime object) {
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -59,7 +57,6 @@ public class CrimeDAOImpl implements CrimeDAO {
 		return true;
 	}
 
-	@Override
 	public boolean delete(Crime object) {
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
