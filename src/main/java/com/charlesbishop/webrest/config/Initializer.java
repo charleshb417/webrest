@@ -1,6 +1,7 @@
 package com.charlesbishop.webrest.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import com.charlesbishop.webrest.config.SpringWebConfig;
+import com.charlesbishop.webrest.config.WebSecurityConfig;
 
 public class Initializer extends
 		AbstractAnnotationConfigDispatcherServletInitializer {
