@@ -17,9 +17,9 @@ public interface BaseDAO<T, U> {
 	// Create an object and retrieve the ID
 	public Serializable save(T u);
 	
-	// Get a list of objects
-	public List<T> list();
-	
+	// Get a list of objects; allow for pagination
+	public List<T> list(int pageNumber, int perPage);
+		
 	// Get an object by its ID
 	public T get(U id);
 	

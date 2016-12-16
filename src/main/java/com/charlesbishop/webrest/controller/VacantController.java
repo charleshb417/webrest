@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.charlesbishop.webrest.dao.VacantDAO;
@@ -20,11 +21,24 @@ import com.charlesbishop.webrest.model.Vacant;
 public class VacantController implements BaseController<Vacant, String>{
 	
 	@RequestMapping(value = "/rest/vacants", method = RequestMethod.GET)
-    public @ResponseBody String list() {
+    public @ResponseBody String list(@RequestParam(required=false) String pageNumber, 
+    		@RequestParam(required=false) String perPage) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		VacantDAO vacantDAO = context.getBean(VacantDAO.class);
 		
-		List<Vacant> list = vacantDAO.list();
+		int pageNum = 0;
+		int perP = 0;
+		if (pageNumber != null && perPage != null){
+			try {
+				pageNum = Integer.parseInt(pageNumber);
+				perP = Integer.parseInt(perPage);
+			}
+			catch (NumberFormatException e){
+				
+			}
+		}
+		
+		List<Vacant> list = vacantDAO.list(pageNum, perP);
 		String returnString = CRUDControllerHelper.generateJSONArray(list);
 		context.close();
 

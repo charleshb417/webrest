@@ -10,7 +10,7 @@ import com.charlesbishop.webrest.model.ObjModel;
  */
 public interface BaseController<T extends ObjModel, U> {
 
-	public String list();
+	public String list(String pageNumber, String perPage);
 	public String create(T obj);
 	public String get(U id);
 	public String update(U id, T obj);
