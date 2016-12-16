@@ -1,9 +1,8 @@
 'use strict';
 angular.module('app').controller('LayoutController', ['$scope', 'CrimeService', 'VacantService', function($scope, CrimeService, VacantService) {
 
-	var self=this;
-	self.crimes = [];
-	self.vacants = [];
+	$scope.crimes = [];
+	$scope.vacants = [];
 	
 	// Pre-populate Crimes and Vacants from database
 	listCrimes();
