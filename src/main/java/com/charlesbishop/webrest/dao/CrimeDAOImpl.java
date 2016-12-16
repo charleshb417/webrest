@@ -20,7 +20,6 @@ public class CrimeDAOImpl implements CrimeDAO {
     }
     
 	public Serializable save(Crime c) {
-		System.out.println(c.getObjectAsJsonString());
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		Serializable id = session.save(c);
