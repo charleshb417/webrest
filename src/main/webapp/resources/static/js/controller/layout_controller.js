@@ -1,18 +1,22 @@
 'use strict';
 angular.module('app').controller('LayoutController', ['$scope', 'CrimeService', 'VacantService', function($scope, CrimeService, VacantService) {
 
+	var defaultPageNumber = 0;
+	var defaultPerPage = 10;
+	
 	$scope.crimes = [];
 	$scope.vacants = [];
 	
 	// Pre-populate Crimes and Vacants from database
-	listCrimes();
-	listVacants();
+	listCrimes(defaultPageNumber, defaultPerPage);
+	listVacants(defaultPageNumber, defaultPerPage);
 	
-    function listCrimes(){
-        CrimeService.listCrimes()
+    function listCrimes(pageNumber, perPage){
+        CrimeService.listCrimes(pageNumber, perPage)
             .then(
             function(d) {
-                self.crimes = d;
+                $scope.crimes = d;
+                console.log(d);
             },
             function(errResponse){
                 console.error('Error while fetching Crimes');
@@ -20,11 +24,12 @@ angular.module('app').controller('LayoutController', ['$scope', 'CrimeService', 
         );
     }
  
-    function listVacants(){
-        VacantService.listVacants()
+    function listVacants(pageNumber, perPage){
+        VacantService.listVacants(pageNumber, perPage)
             .then(
             function(d) {
-                self.vacants = d;
+                $scope.vacants = d;
+                console.log(d);
             },
             function(errResponse){
                 console.error('Error while fetching Vacants');

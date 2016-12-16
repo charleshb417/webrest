@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app').factory('VacantService', ['$http', '$q', function($http, $q){
-    var REST_SERVICE_BASE_URI = 'http://localhost:8080/webrest/rest/vacants/';
+    var REST_SERVICE_BASE_URI = 'http://localhost:8080/webrest/rest/vacants';
  
     var factory = {
     	listVacants: listVacants,
@@ -13,9 +13,9 @@ angular.module('app').factory('VacantService', ['$http', '$q', function($http, $
  
     return factory;
  
-    function listVacants() {
+    function listVacants(pageNumber, perPage) {
         var deferred = $q.defer();
-        $http.get(REST_SERVICE_BASE_URI)
+        $http.get(REST_SERVICE_BASE_URI + "?pageNumber="+pageNumber+"&perPage="+perPage)
             .then(
             function (response) {
                 deferred.resolve(response.data);
@@ -46,7 +46,7 @@ angular.module('app').factory('VacantService', ['$http', '$q', function($http, $
  
     function updateVacant(vacant, id) {
         var deferred = $q.defer();
-        $http.put(REST_SERVICE_BASE_URI+id, vacant)
+        $http.put(REST_SERVICE_BASE_URI+"/"+id, vacant)
             .then(
             function (response) {
                 deferred.resolve(response.data);
@@ -61,7 +61,7 @@ angular.module('app').factory('VacantService', ['$http', '$q', function($http, $
  
     function deleteVacant(id) {
         var deferred = $q.defer();
-        $http.delete(REST_SERVICE_BASE_URI+id)
+        $http.delete(REST_SERVICE_BASE_URI+"/"+id)
             .then(
             function (response) {
                 deferred.resolve(response.data);
@@ -76,7 +76,7 @@ angular.module('app').factory('VacantService', ['$http', '$q', function($http, $
     
     function getVacant(id) {
         var deferred = $q.defer();
-        $http.get(REST_SERVICE_BASE_URI+id)
+        $http.get(REST_SERVICE_BASE_URI+"/"+id)
             .then(
             function (response) {
                 deferred.resolve(response.data);

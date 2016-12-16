@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app').factory('CrimeService', ['$http', '$q', function($http, $q){
-    var REST_SERVICE_BASE_URI = 'http://localhost:8080/webrest/rest/crimes/';
+    var REST_SERVICE_BASE_URI = 'http://localhost:8080/webrest/rest/crimes';
  
     var factory = {
     	listCrimes: listCrimes,
@@ -13,9 +13,9 @@ angular.module('app').factory('CrimeService', ['$http', '$q', function($http, $q
  
     return factory;
  
-    function listCrimes() {
+    function listCrimes(pageNumber, perPage) {
         var deferred = $q.defer();
-        $http.get(REST_SERVICE_BASE_URI)
+        $http.get(REST_SERVICE_BASE_URI + "?pageNumber="+pageNumber+"&perPage="+perPage)
             .then(
             function (response) {
                 deferred.resolve(response.data);
@@ -46,7 +46,7 @@ angular.module('app').factory('CrimeService', ['$http', '$q', function($http, $q
  
     function updateCrime(crime, id) {
         var deferred = $q.defer();
-        $http.put(REST_SERVICE_BASE_URI+id, crime)
+        $http.put(REST_SERVICE_BASE_URI+"/"+id, crime)
             .then(
             function (response) {
                 deferred.resolve(response.data);
@@ -61,7 +61,7 @@ angular.module('app').factory('CrimeService', ['$http', '$q', function($http, $q
  
     function deleteCrime(id) {
         var deferred = $q.defer();
-        $http.delete(REST_SERVICE_BASE_URI+id)
+        $http.delete(REST_SERVICE_BASE_URI+"/"+id)
             .then(
             function (response) {
                 deferred.resolve(response.data);
@@ -76,7 +76,7 @@ angular.module('app').factory('CrimeService', ['$http', '$q', function($http, $q
     
     function getCrime(id) {
         var deferred = $q.defer();
-        $http.get(REST_SERVICE_BASE_URI+id)
+        $http.get(REST_SERVICE_BASE_URI+"/"+id)
             .then(
             function (response) {
                 deferred.resolve(response.data);
