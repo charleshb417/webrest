@@ -1,3 +1,3 @@
 'use strict';
  
-var App = angular.module('app',[]);
+var App = angular.module('app',['ngTable']);

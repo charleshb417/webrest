@@ -171,7 +171,13 @@
 	  <version>3.5.17</version>
 	  <scope>runtime</scope>
 	</dependency>	
-	
+	<dependency>
+      <groupId>org.webjars</groupId>
+	  <artifactId>ng-table</artifactId>
+	  <version>1.0.0-beta.9</version>
+	  <scope>runtime</scope>
+	</dependency>
+		
     <!-- Servlet Packages -->
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -201,7 +207,7 @@
       	<artifactId>jetty-maven-plugin</artifactId>
       	<version>${jetty.version}</version>
       	<configuration>
-			<scanIntervalSeconds>3</scanIntervalSeconds>
+			<scanIntervalSeconds>1</scanIntervalSeconds>
 			<webApp>
 				<contextPath>/webrest</contextPath>
 			</webApp>
