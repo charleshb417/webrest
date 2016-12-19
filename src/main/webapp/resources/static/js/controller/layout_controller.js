@@ -4,6 +4,10 @@ angular.module('app').controller('LayoutController', ['$scope', 'ngTableParams',
 	var defaultPageNumber = 0;
 	var defaultPerPage = 0;
 	
+    var vacantsComplete = false;
+    var crimesComplete = false;
+	$scope.overlayClass = 'overlay';
+	
 	$scope.crimes = [];
 	$scope.vacants = [];
 
@@ -41,6 +45,8 @@ angular.module('app').controller('LayoutController', ['$scope', 'ngTableParams',
             function(d) {
             	$scope.crimes = d;
             	$scope.tableParams.crimes = new NgTableParams({}, { dataset: $scope.crimes });
+            	crimesComplete = true;
+            	removeOverlayWhenComplete();
             },
             function(errResponse){
                 console.error('Error while fetching Crimes');
@@ -54,6 +60,8 @@ angular.module('app').controller('LayoutController', ['$scope', 'ngTableParams',
             function(d) {
             	$scope.vacants = d;
             	$scope.tableParams.vacants = new NgTableParams({}, { dataset: $scope.vacants });
+            	vacantsComplete = true;
+            	removeOverlayWhenComplete();
             },
             function(errResponse){
                 console.error('Error while fetching Vacants');
@@ -63,5 +71,12 @@ angular.module('app').controller('LayoutController', ['$scope', 'ngTableParams',
     
     function updateTableParams(){
     	$scope.tableParams = new NgTableParams({}, { dataset: $scope.crimes });
+    }
+    
+    // When vacants and crimes are complete, remove overlay
+    function removeOverlayWhenComplete(){
+    	if(vacantsComplete && crimesComplete){
+    		$scope.overlayClass = '';
+    	}
     }
 }]);

@@ -7,16 +7,15 @@
     <link rel="stylesheet" href="./resources/static/css/app.css">
     <link rel="stylesheet" href="./webjars/bootstrap/3.3.5/css/bootstrap.css">
 	<link rel="stylesheet" href="./webjars/ng-table/1.0.0-beta.9/ng-table.min.css">
-	<!--link rel="stylesheet" href="./resources/static/lib/ngtable/ng-table.min.css"-->
+	<link rel="stylesheet" href="./resources/static/lib/loading-bar.min.css">
 </head>
 <body ng-app="app">
 	
 	<!-- Main Layout -->
-	<div class="generic-container parentDiv" ng-controller="LayoutController as ctrl">
+	<div class="generic-container parentDiv {{overlayClass}}" ng-controller="LayoutController as ctrl">
 		<div id="appControls" class="leftSide">
 			Select Dataset:<br/>
 			<select ng-model="tableSelection" ng-options="x for x in availableTableSelections"></select><br/>
-			{{currentBubbleChartKey}}
 			Select Dashboard:<br/>
 			<select ng-model="dashboardSelection" ng-options="x for x in availableDashboardSelections"></select><br/>
 			<div class="animate-switch-container" ng-switch on="dashboardSelection">
@@ -85,8 +84,9 @@
 	<script src="./webjars/angularjs/1.6.0/angular-resource.js"></script>
 	<script src="./webjars/angularjs/1.6.0/angular-route.js"></script>
 	<script src="./webjars/ng-table/1.0.0-beta.9/ng-table.min.js"></script>
-	<!--script src="./resources/static/lib/ngtable/ng-table.min.js"></script>-->
 	<script src="./webjars/d3js/3.5.17/d3.min.js"></script>
+	<script src="<c:url value='./resources/static/lib/loading-bar.min.js' />"></script>
+	
 	
 	<script src="<c:url value='./resources/static/js/app.js' />"></script>
 	<script src="<c:url value='./resources/static/js/service/crime_service.js' />"></script>

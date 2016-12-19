@@ -99,7 +99,7 @@ angular.module('app').directive('bubblechart', function($window) {
 				var data = scope[attrs.chartData];
 				var key = newVal[1];
 				
-				if (data != undefined && data.length > 0){
+				if (data != undefined && key != undefined && data.length > 0 && data[0].hasOwnProperty(key)){
 					draw(data, key);
 				}
             });
