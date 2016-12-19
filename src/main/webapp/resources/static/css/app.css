@@ -44,3 +44,8 @@
     opacity:0.8;
     z-index:1001;
 }
+
+.activeBubble {
+	stroke: #000;
+	stroke-width: 2;
+}

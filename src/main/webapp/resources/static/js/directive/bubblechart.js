@@ -69,7 +69,13 @@ angular.module('app').directive('bubblechart', function($window) {
 			        .attr("r", function(d){ return d.r; })
 			        .attr("cx", function(d){ return d.x; })
 			        .attr("cy", function(d){ return d.y; })
-			        .style("fill", function(d) { return color(d.value); });
+			        .style("fill", function(d) { return color(d.value); })
+			        .on("mouseover", function() {
+			        	d3.select(this).classed("activeBubble", true);
+			        })
+			        .on("mouseout",  function() {
+			        	d3.select(this).classed("activeBubble", false);
+			        });
 
 			    //format the text for each bubble
 			    bubbles.append("text")
@@ -87,11 +93,18 @@ angular.module('app').directive('bubblechart', function($window) {
 				        	return str; 	
 			        	}			        	
 			        })
+			        .each(function(d,i) {
+			        	// Remove text that is too large to render
+			        	if (this.getComputedTextLength() > 2*d.r){
+				        	this.remove();
+				        }
+				    })
 			        .style({
 			            "fill":"white", 
 			            "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
 			            "font-size": "12px"
 			        });
+			    
 			}
 			
 			// Watch for changes in scope
