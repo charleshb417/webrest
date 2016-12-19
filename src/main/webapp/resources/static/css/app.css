@@ -1,0 +1,35 @@
+.parentDiv {
+	overflow: hidden;
+}
+
+.leftSide {
+	float:left;
+	width: 200px;
+}
+
+.topBar {
+	height: 40px;
+	background-color:#452249;
+}
+
+.rightSide {
+	float:right;
+	margin-left:200px;
+}
+
+#appControls {
+	background-color: #230826;
+	border-right-style: solid;
+	border-right-color: #341338;
+	color: #000;
+	height: 100%;
+    position: fixed;
+    z-index: 1;
+}
+
+#dashboard {
+	
+}
+
+#tableControls {
+}
