@@ -13,6 +13,15 @@ angular.module('app').directive('bubblechart', function($window) {
 			var svg = d3.select(rawSvg);
 			var padding = 20;
 
+			var tip = d3.tip()
+			  .attr('class', 'd3-tip')
+			  .offset([-10, 0])
+			  .html(function(d) {
+			    return "<span class='tooltipText'>" + d.key + ": " + d.value + " records</span>";
+			  })
+			  
+			svg.call(tip);
+			
 			function transformData(data, key){
 				var res = {};
 				var tmpKey = '';
@@ -70,11 +79,13 @@ angular.module('app').directive('bubblechart', function($window) {
 			        .attr("cx", function(d){ return d.x; })
 			        .attr("cy", function(d){ return d.y; })
 			        .style("fill", function(d) { return color(d.value); })
-			        .on("mouseover", function() {
+			        .on("mouseover", function(d) {
 			        	d3.select(this).classed("activeBubble", true);
+			        	tip.show(d);
 			        })
-			        .on("mouseout",  function() {
+			        .on("mouseout",  function(d) {
 			        	d3.select(this).classed("activeBubble", false);
+			        	tip.hide(d);
 			        });
 
 			    //format the text for each bubble

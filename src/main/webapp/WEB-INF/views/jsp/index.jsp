@@ -85,6 +85,7 @@
 	<script src="./webjars/angularjs/1.6.0/angular-route.js"></script>
 	<script src="./webjars/ng-table/1.0.0-beta.9/ng-table.min.js"></script>
 	<script src="./webjars/d3js/3.5.17/d3.min.js"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	<script src="<c:url value='./resources/static/lib/loading-bar.min.js' />"></script>
 	
 	
