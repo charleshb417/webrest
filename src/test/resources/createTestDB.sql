@@ -10,6 +10,29 @@ USE `openbaltimore`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `appuser`
+--
+
+CREATE TABLE IF NOT EXISTS `appuser` (
+  `username` varchar(32) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `userrole` varchar(64) NOT NULL DEFAULT 'ROLE_USER'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `appuser`
+--
+
+INSERT INTO `appuser` (`username`, `password`, `userrole`) VALUES
+('user', '$2a$10$O7y.4uIP96cSu64j00dXc.5HPmwvdidAv4sgxgaM7sR8gUxqGWfLm', 'USER');
+
+--
+-- Indexes for table `appuser`
+--
+ALTER TABLE `appuser`
+  ADD PRIMARY KEY (`username`);
+
+--
 -- Table structure for table `crime`
 --
 
