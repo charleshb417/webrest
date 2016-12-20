@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.configurers
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.UserDetailsManagerConfigurer.UserDetailsBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.charlesbishop.webrest.dao.AppUserDAO;
 import com.charlesbishop.webrest.model.AppUser;
@@ -27,6 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		// Iterate through the user list for authentication
         InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> inMemoryAuth = auth.inMemoryAuthentication();
+        inMemoryAuth.passwordEncoder(new BCryptPasswordEncoder());
         for (AppUser user : list)
         	inMemoryAuth.withUser(user.getUsername()).password(user.getPassword()).roles(user.getUserRole());
         		
