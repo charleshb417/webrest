@@ -12,7 +12,7 @@ angular.module('app').controller('LayoutController', ['$scope', 'ngTableParams',
 	$scope.vacants = [];
 
 	// Set dashboard controls
-	$scope.availableDashboardSelections = ['bubblechart'];
+	$scope.availableDashboardSelections = ['bubblechart', 'adjacency'];
 	$scope.dashboardSelection = $scope.availableDashboardSelections[0];
 	
 	// Set table controls
@@ -39,6 +39,11 @@ angular.module('app').controller('LayoutController', ['$scope', 'ngTableParams',
 	};
 
 	$scope.currentBubbleChartKey = '';
+	
+	//TODO these are temp
+	$scope.adjacencyKeyX = '';
+	$scope.adjacencyKeyY = '';
+	
     function listCrimes(pageNumber, perPage){
         CrimeService.listCrimes(pageNumber, perPage)
             .then(

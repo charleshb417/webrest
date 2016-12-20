@@ -14,14 +14,21 @@
 	<!-- Main Layout -->
 	<div class="generic-container parentDiv {{overlayClass}}" ng-controller="LayoutController as ctrl">
 		<div id="appControls" class="leftSide">
-			Select Dataset:<br/>
+			<span class="toolbarLabel">Select Dataset:</span><br/>
 			<select ng-model="tableSelection" ng-options="x for x in availableTableSelections"></select><br/>
-			Select Dashboard:<br/>
+			<span class="toolbarLabel">Select Dashboard:</span><br/>
 			<select ng-model="dashboardSelection" ng-options="x for x in availableDashboardSelections"></select><br/>
 			<div class="animate-switch-container" ng-switch on="dashboardSelection">
 				<div class="animate-switch" ng-switch-when="bubblechart">
-					Frequency Key:<br/>
+					<span class="toolbarLabel">Frequency Key:</span><br/>
 					<select ng-model="$parent.currentBubbleChartKey" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
+				</div>
+				<div class="animate-switch" ng-switch-when="adjacency">
+					<span class="toolbarLabel">X-Axis:</span><br/>
+					<select ng-model="$parent.adjacencyKeyX" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
+					
+					<span class="toolbarLabel">Y-Axis</span><br/>
+					<select ng-model="$parent.adjacencyKeyY" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
 				</div>
 			</div>
 		</div>
@@ -31,14 +38,20 @@
 			</div>
 			<div id="dashboard" class="animate-switch-container" ng-switch on="dashboardSelection">
 				<!-- A bubblechart which allows the user to view frequency of different attributes in the data -->
-				<bubblechart chart-type="tableSelection" 
-					chart-key="currentBubbleChartKey"
-					chart-data="{{tableSelection}}"
-					class="animate-switch" ng-switch-when="bubblechart" />
-				
-				<!-- A map showing where all of the events transpired -->
-				<!-- mapchart /-->
-				
+				<div class="animate-switch" ng-switch-when="bubblechart">
+					<bubblechart chart-type="tableSelection" 
+						chart-key="currentBubbleChartKey"
+						chart-data="{{tableSelection}}"
+						 />
+				</div>
+				<!-- An adjacency matrix showing co-occurrence between keys -->
+				<div class="animate-switch" ng-switch-when="adjacency" >
+					<adjacency chart-type="tableSelection" 
+						chart-key-x="adjacencyKeyX"
+						chart-key-y="adjacencyKeyY"
+						chart-data="{{tableSelection}}"
+						/>
+				</div>
 				<!-- A linechart showing frequency of events over time -->
 				<!-- timechart /-->
 			</div>
@@ -95,6 +108,7 @@
 	<script src="<c:url value='./resources/static/js/controller/navbar_controller.js' />"></script>
 	<script src="<c:url value='./resources/static/js/controller/layout_controller.js' />"></script>
 	<script src="<c:url value='./resources/static/js/directive/bubblechart.js' />"></script>
+	<script src="<c:url value='./resources/static/js/directive/adjacency.js' />"></script>
 	<script src="<c:url value='./resources/static/js/directive/linechart.js' />"></script>
 	<script src="<c:url value='./resources/static/js/directive/timechart.js' />"></script>
 </body>
