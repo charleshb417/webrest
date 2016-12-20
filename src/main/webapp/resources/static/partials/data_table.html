@@ -1,0 +1,37 @@
+<div class="modal-title">
+  <h1>Data</h1>
+</div>'
+<div class="modal-body">
+	<div id="tableControls">			
+		<div class="animate-switch-container" ng-switch on="tableSelection">
+			<table ng-table="tableParams.crimes" class="table animate-switch" ng-switch-when="crimes"
+			 show-filter="true">
+				<tr ng-repeat="crime in $data">
+					<td title="'CrimeID'" sortable="'crimeID'">{{crime.crimeID}}</td>
+	       			<td title="'CrimeDate'" sortable="'crimeDate'">{{crime.crimeDate}}</td>
+	       			<td title="'CrimeCode'" sortable="'crimeCode'">{{crime.crimeCode}}</td>
+	       			<td title="'Location'" sortable="'location'">{{crime.location}}</td>
+	       			<td title="'Description'" sortable="'description'">{{crime.description}}</td>
+	       			<td title="'Weapon'" sortable="'weapon'">{{crime.weapon}}</td>
+	       			<td title="'District'" sortable="'district'">{{crime.district}}</td>
+	       			<td title="'Neighborhood'" sortable="'neighborhood'">{{crime.neighborhood}}</td>
+		    	</tr>
+			</table>
+			
+			<table ng-table="tableParams.vacants" class="table animate-switch" ng-switch-when="vacants"
+			 show-filter="true">
+				<tr ng-repeat="vacant in $data">
+					<td title="'ReferenceID'" sortable="'referenceID'">{{vacant.referenceID}}</td>
+	       			<td title="'Block'" sortable="'block'">{{vacant.block}}</td>
+	       			<td title="'Lot'" sortable="'lot'">{{vacant.lot}}</td>
+	       			<td title="'BuildingAddress'" sortable="'buildingAddress'">{{vacant.buildingAddress}}</td>
+	       			<td title="'NoticeDate'" sortable="'noticeDate'">{{vacant.noticeDate}}</td>
+	       			<td title="'Neighborhood'" sortable="'neighborhood'">{{vacant.neighborhood}}</td>
+	       			<td title="'PoliceDistrict'" sortable="'policeDistrict'">{{vacant.policeDistrict}}</td>
+	       			<td title="'CouncilDistrict'" sortable="'councilDistrict'">{{vacant.councilDistrict}}</td>
+	       			<td title="'Location'" sortable="'location'">{{vacant.location}}</td>	
+		    	</tr>
+			</table>
+		</div>
+	</div>
+</div>
