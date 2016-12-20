@@ -1,5 +1,5 @@
 'use strict';
-angular.module('app').controller('LayoutController', ['$scope', 'ngTableParams', 'CrimeService', 'VacantService', function($scope, NgTableParams, CrimeService, VacantService) {
+angular.module('app').controller('LayoutController', ['$scope', '$uibModal', 'ngTableParams', 'CrimeService', 'VacantService', function($scope, $uibModal, NgTableParams, CrimeService, VacantService) {
 
 	var defaultPageNumber = 0;
 	var defaultPerPage = 0;
@@ -83,5 +83,15 @@ angular.module('app').controller('LayoutController', ['$scope', 'ngTableParams',
     	if(vacantsComplete && crimesComplete){
     		$scope.overlayClass = '';
     	}
+    }
+    
+    $scope.openModal = function(){
+        var modalInstance = $uibModal.open({
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: './resources/static/partials/data_table.html',
+            controller: 'LayoutController',
+            size: 'lg'
+          });
     }
 }]);
