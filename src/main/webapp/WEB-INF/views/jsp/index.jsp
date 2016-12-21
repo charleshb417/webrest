@@ -14,7 +14,12 @@
 		
 		<!-- Handle the left-hand side navigation / controls -->
 		<div id="appControls" class="leftSide">
-		
+			<div class="toolbarSection">
+				<div class="toolbarLabel mainLabel clickable" ng-click="openAboutModal();">
+					About
+					<i class="pull-right glyphicon glyphicon-user"></i>
+				</div>
+			</div>
 		    <div class="toolbarSection">
 				<div class="toolbarLabel mainLabel clickable" ng-click="collapsed.dataset = !collapsed.dataset">
 					Select Dataset 
@@ -37,11 +42,11 @@
 				<div class="toolbarContent" ng-show="collapsed.dashboard">
 					<select ng-model="dashboardSelection" ng-options="x for x in availableDashboardSelections"></select><br/>
 					<div class="animate-switch-container" ng-switch on="dashboardSelection">
-						<div class="animate-switch" ng-switch-when="bubblechart">
+						<div class="animate-switch" ng-switch-when="Frequency Chart">
 							<span class="toolbarLabel">Frequency Key:</span><br/>
 							<select ng-model="$parent.currentBubbleChartKey[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
 						</div>
-						<div class="animate-switch" ng-switch-when="adjacency">
+						<div class="animate-switch" ng-switch-when="Adjacency Matrix">
 							<span class="toolbarLabel">X-Axis:</span><br/>
 							<select ng-model="$parent.adjacencyKeyX[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
 							
@@ -52,33 +57,37 @@
 				</div>
 			</div>
 			<div class="toolbarSection">
-				<div class="toolbarLabel mainLabel clickable" ng-click="openModal();">
+				<div class="toolbarLabel mainLabel clickable" ng-click="openDataModal();">
 					View Data
 					<i class="pull-right glyphicon glyphicon-list"></i>
 				</div>
 			</div>
+			<div class="detailsView">
+				<span class="toolbarLabel">Current Data: {{tableSelection.charAt(0).toUpperCase() + tableSelection.slice(1)}}</span><br/>
+				<span class="toolbarLabel">Current View: </span><br/>
+				<span class="toolbarLabel">{{dashboardSelection}}</span><br/>
+				<span class="toolbarLabel">Quantity: {{this[tableSelection].length}}</span>
+			</div>
 		</div>
 		
 		<!-- Handle the content area on screen -->
-		<div class="rightSide">
+		<div class="rightSide contentView">
 			<div id="dashboard" class="animate-switch-container" ng-switch on="dashboardSelection">
 				<!-- A bubblechart which allows the user to view frequency of different attributes in the data -->
-				<div class="animate-switch" ng-switch-when="bubblechart">
+				<div class="animate-switch" ng-switch-when="Frequency Chart">
 					<bubblechart chart-type="tableSelection" 
 						chart-key="currentBubbleChartKey[tableSelection]"
 						chart-data="{{tableSelection}}"
 						 />
 				</div>
 				<!-- An adjacency matrix showing co-occurrence between keys -->
-				<div class="animate-switch" ng-switch-when="adjacency" >
+				<div class="animate-switch" ng-switch-when="Adjacency Matrix" >
 					<adjacency chart-type="tableSelection" 
 						chart-key-x="adjacencyKeyX[tableSelection]"
 						chart-key-y="adjacencyKeyY[tableSelection]"
 						chart-data="{{tableSelection}}"
 						/>
 				</div>
-				<!-- A linechart showing frequency of events over time -->
-				<!-- timechart /-->
 			</div>
 		</div>
 		

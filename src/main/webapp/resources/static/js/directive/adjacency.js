@@ -2,7 +2,7 @@
 angular.module('app').directive('adjacency', function($window) {
 	return {
 		restrict : "EA",
-		template : '<svg id="adjacencySvg" width="600" height="600"></svg>',
+		template : '<div id="contentSvg"><svg id="adjacencySvg" width="600" height="600"></svg></div>',
 		link : function(scope, elem, attrs) {
 			var d3 = $window.d3;
 			var rawSvg = elem.find("svg")[0];
@@ -94,7 +94,12 @@ angular.module('app').directive('adjacency', function($window) {
 				var matrix = [], nodes = data.nodes, n = nodes.length;
 	
 				var tip = d3.tip().attr('class', 'd3-tip')
-						.offset([ -10, 0 ])
+						.offset(function(d){
+							if (d.y == 0)
+								return [10, 0];
+							else
+								return [-10, 0];
+						})
 						.html(function(d) {
 							return "<span class='tooltipText'>"
 										+ nodes[d.x].name + " & "
@@ -117,8 +122,6 @@ angular.module('app').directive('adjacency', function($window) {
 					});
 				});
 	
-				// Convert links to matrix; count character
-				// occurrences.
 				data.links.forEach(function(link) {
 					matrix[link.source][link.target].z += link.value;
 					matrix[link.target][link.source].z += link.value;
@@ -128,6 +131,10 @@ angular.module('app').directive('adjacency', function($window) {
 					nodes[link.target].count += link.value;	
 				});
 			
+				// Zero out the diagonal
+				for (var i=0; i<matrix.length; i++)
+					matrix[i][i] = 0;
+				
 				x.domain(d3.range(n).sort( function(a, b) {
 							return d3.ascending(nodes[a].name,
 									nodes[b].name);

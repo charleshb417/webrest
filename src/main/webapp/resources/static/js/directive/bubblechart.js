@@ -2,7 +2,7 @@
 angular.module('app').directive('bubblechart', function($window) {
 	return {
 		restrict : "EA",
-		template : '<svg id="bubbleSvg" width="600" height="600"></svg>',
+		template : '<div class="contentSvg"><svg id="bubbleSvg" width="600" height="600"></svg></div>',
 		link : function(scope, elem, attrs) {
 			
 			var d3 = $window.d3;

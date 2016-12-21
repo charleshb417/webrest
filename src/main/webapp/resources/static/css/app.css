@@ -8,7 +8,13 @@
 }
 
 .rightSide {
-	float:right;
+	height:100%;
+	position:fixed;
+	padding-left:350px;
+}
+
+.contentView {
+	padding-top:25px;
 }
 
 /* Navigation Bar Styling */
@@ -25,6 +31,17 @@
 
 .clickable {
 	cursor: pointer;	
+}
+
+.detailsView {
+	padding-top:20px;
+	padding-bottom:50px;
+}
+
+.contentSvg {
+	background-color: white;
+	width: 600px;
+	height: 600px;
 }
 
 .toolbarSection {
@@ -47,13 +64,6 @@
 .toolbarLabel {
 	color: #fff;
 	padding-left: 50px;
-}
-
-#dashboard {
-	
-}
-
-#tableControls {
 }
 
 .overlay {

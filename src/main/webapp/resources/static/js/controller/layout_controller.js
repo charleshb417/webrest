@@ -12,7 +12,7 @@ angular.module('app').controller('LayoutController', ['$scope', '$uibModal', 'ng
 	$scope.vacants = [];
 
 	// Set dashboard controls
-	$scope.availableDashboardSelections = ['bubblechart', 'adjacency'];
+	$scope.availableDashboardSelections = ['Frequency Chart', 'Adjacency Matrix'];
 	$scope.dashboardSelection = $scope.availableDashboardSelections[0];
 	
 	// Set table controls
@@ -85,13 +85,27 @@ angular.module('app').controller('LayoutController', ['$scope', '$uibModal', 'ng
     	}
     }
     
-    $scope.openModal = function(){
+    $scope.openDataModal = function(){
         var modalInstance = $uibModal.open({
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
             templateUrl: './resources/static/partials/data_table.html',
             controller: 'LayoutController',
             size: 'lg'
+          });
+    }
+    
+    $scope.openAboutModal = function(){
+        var modalInstance = $uibModal.open({
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: './resources/static/partials/about.html',
+            controller: 'LayoutController',
+            controller: function($scope, $uibModalInstance) {
+                $scope.ok = function () {
+                	$uibModalInstance.dismiss('cancel');
+                }
+            }
           });
     }
 }]);

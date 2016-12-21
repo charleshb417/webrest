@@ -1,0 +1,30 @@
+<div class="modal-title">
+  <h1>Inside Baltimore</h1>
+</div>
+<div class="modal-body">
+<div>
+Inside Baltimore allows users to visualize different datasets that are provided by 
+Baltimore City via <a href="https://data.baltimorecity.gov/">Open Baltimore</a>. This 
+application was built primarily using Spring, Hibernate, AngularJS, and D3JS.
+</div>
+<div>
+Currently, the application contains two datasets:
+	<ul>
+		<li><strong>Vacant housing</strong> data from 2011 - 2016</li>
+		<li><strong>Crime</strong> data from January through November 2016</li>
+	</ul>
+Currently, users can navigate this data as follows:
+	<ul>
+		<li>The <strong>Adjacency Matrix</strong> creates a heatmap grid to visualize how often two 
+		data elements occurred. For example, if there were a large amount of burglaries in the 
+		Federal Hill neighborhood, the intersection of those two values would be more intense then other
+		cells. Users can select which keys to compare by setting the "X-Axis" and "Y-Axis" dropdown 
+		lists to the appropriate key. This chart is accessible by clicking "Select Dashboard" and selecting 
+		"Adjacency Matrix."</li>
+		<li>The <strong>Frequency Chart</strong> sizes bubbles based on how many occurrences of a value 
+		is seen in the data. Users can select what key to sort on from the "Frequency Key" dropdown list. 
+		This chart is accessible by clicking "Select Dashboard" and selecting "Frequency Chart".</li>
+	</ul>
+</div>
+<button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
+</div>
