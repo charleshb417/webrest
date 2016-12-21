@@ -39,14 +39,14 @@
 					<div class="animate-switch-container" ng-switch on="dashboardSelection">
 						<div class="animate-switch" ng-switch-when="bubblechart">
 							<span class="toolbarLabel">Frequency Key:</span><br/>
-							<select ng-model="$parent.currentBubbleChartKey" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
+							<select ng-model="$parent.currentBubbleChartKey[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
 						</div>
 						<div class="animate-switch" ng-switch-when="adjacency">
 							<span class="toolbarLabel">X-Axis:</span><br/>
-							<select ng-model="$parent.adjacencyKeyX" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
+							<select ng-model="$parent.adjacencyKeyX[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
 							
 							<span class="toolbarLabel">Y-Axis</span><br/>
-							<select ng-model="$parent.adjacencyKeyY" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
+							<select ng-model="$parent.adjacencyKeyY[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
 						</div>
 					</div>
 				</div>
@@ -65,15 +65,15 @@
 				<!-- A bubblechart which allows the user to view frequency of different attributes in the data -->
 				<div class="animate-switch" ng-switch-when="bubblechart">
 					<bubblechart chart-type="tableSelection" 
-						chart-key="currentBubbleChartKey"
+						chart-key="currentBubbleChartKey[tableSelection]"
 						chart-data="{{tableSelection}}"
 						 />
 				</div>
 				<!-- An adjacency matrix showing co-occurrence between keys -->
 				<div class="animate-switch" ng-switch-when="adjacency" >
 					<adjacency chart-type="tableSelection" 
-						chart-key-x="adjacencyKeyX"
-						chart-key-y="adjacencyKeyY"
+						chart-key-x="adjacencyKeyX[tableSelection]"
+						chart-key-y="adjacencyKeyY[tableSelection]"
 						chart-data="{{tableSelection}}"
 						/>
 				</div>

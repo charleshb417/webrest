@@ -39,11 +39,10 @@ angular.module('app').controller('LayoutController', ['$scope', '$uibModal', 'ng
 			vacants: ['neighborhood', 'policeDistrict', 'councilDistrict']
 	};
 
-	$scope.currentBubbleChartKey = '';
-	
-	//TODO these are temp
-	$scope.adjacencyKeyX = '';
-	$scope.adjacencyKeyY = '';
+	// Initialize visualization scope variables
+	$scope.currentBubbleChartKey = { crimes: $scope.bubblechartKeys.crimes[0], vacants: $scope.bubblechartKeys.vacants[0] };	
+	$scope.adjacencyKeyX = { crimes: $scope.bubblechartKeys.crimes[0], vacants: $scope.bubblechartKeys.vacants[0] };
+	$scope.adjacencyKeyY = { crimes: $scope.bubblechartKeys.crimes[1], vacants: $scope.bubblechartKeys.vacants[1] };
 	
     function listCrimes(pageNumber, perPage){
         CrimeService.listCrimes(pageNumber, perPage)
