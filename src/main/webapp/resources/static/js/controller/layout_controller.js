@@ -30,6 +30,7 @@ angular.module('app').controller('LayoutController', ['$scope', '$uibModal', 'ng
 			vacants: new NgTableParams({}, {})
 	}
 	
+	$scope.collapsed = { dataset: false, dashboard: false };
 	/*
 	 * Visualization Specific Properties
 	 */

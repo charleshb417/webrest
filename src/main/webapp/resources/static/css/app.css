@@ -7,14 +7,11 @@
 	width: 200px;
 }
 
-.topBar {
-	height: 40px;
-	background-color:#452249;
-}
-
 .rightSide {
 	float:right;
 }
+
+/* Navigation Bar Styling */
 
 #appControls {
 	background-color: #230826;
@@ -26,8 +23,30 @@
     z-index: 1;
 }
 
+.clickable {
+	cursor: pointer;	
+}
+
+.toolbarSection {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 3px groove #341338;
+}
+
+.toolbarLabel.mainLabel:hover { 
+    background-color: #CBEECC;
+    color: #000;
+}
+
+.toolbarContent {
+	border-top: 1px solid black;
+	padding-top: 10px;
+	backround-color: #452249;
+}
+
 .toolbarLabel {
 	color: #fff;
+	padding-left: 50px;
 }
 
 #dashboard {
