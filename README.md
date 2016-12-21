@@ -24,7 +24,7 @@ $ mysql> source <path>/<to>/src/main/resources/createDB.sql
 
 4) In the directory that contains pom.xml, run Jetty. This will be the only step needed to re-run the application at a later date.
 ```sh
-$ mvn clean jetty:run-
+$ mvn clean jetty:run
 ```
 
 5) Go to http://localhost:8080/webrest. Log in using the credentials "user" and "password".
