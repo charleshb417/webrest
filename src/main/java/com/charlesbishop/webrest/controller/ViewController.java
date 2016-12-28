@@ -10,4 +10,9 @@ public class ViewController {
 	public String main(){
 		return "index";
 	}
+	
+	@RequestMapping("/login")
+	public String login(){
+		return "login";
+	}
 }

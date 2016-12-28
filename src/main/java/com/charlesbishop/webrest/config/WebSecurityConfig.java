@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.UserDetailsManagerConfigurer.UserDetailsBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,7 +19,8 @@ import com.charlesbishop.webrest.model.AppUser;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+
+	@Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     	
     	// Get Users from DB
@@ -33,5 +35,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         	inMemoryAuth.withUser(user.getUsername()).password(user.getPassword()).roles(user.getUserRole());
         		
 		context.close();
+    }
+	
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+	        .authorizeRequests()
+	        .antMatchers("/resources/**", "/webjars/**", "/login*").permitAll() 
+	        .anyRequest().authenticated()
+            .and()
+            .formLogin()
+              .loginPage("/login")
+              .defaultSuccessUrl("/")
+              .failureUrl("/login?error=true")
+            .and()
+            .logout().logoutSuccessUrl("/login");
     }
 }
