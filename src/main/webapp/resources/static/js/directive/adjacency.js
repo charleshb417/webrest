@@ -229,8 +229,8 @@ angular.module('app').directive('adjacency', function($window) {
 				var data = scope[attrs.chartData];
 				var x = newVal[1];
 				var y = newVal[2];
-				if (data != undefined && x != undefined && y != undefined
-						&& data.length > 0 && data[0].hasOwnProperty(x) && data[0].hasOwnProperty(y)){
+				if ( arrayIsValidNonEmpty(data) && x && y 
+						&& data[0].hasOwnProperty(x) && data[0].hasOwnProperty(y)){
 					draw(data, x, y);
 				}
             });

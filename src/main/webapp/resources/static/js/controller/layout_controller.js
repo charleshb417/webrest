@@ -36,7 +36,7 @@ angular.module('app').controller('LayoutController', ['$scope', '$uibModal', 'ng
 	 */
 	$scope.bubblechartKeys = {
 			crimes: ['description', 'weapon', 'district', 'neighborhood'],
-			vacants: ['neighborhood', 'policeDistrict', 'councilDistrict']
+			vacants: ['neighborhood', 'policeDistrict']
 	};
 
 	// Initialize visualization scope variables
