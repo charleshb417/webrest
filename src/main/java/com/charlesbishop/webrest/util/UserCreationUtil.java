@@ -32,4 +32,14 @@ public class UserCreationUtil {
 			return null;
 		}
 	}
+	
+	// Check if a password is valid or not
+	public static boolean passwordIsValid(String password){
+		boolean validLength = (password.length() >= 8 && password.length() <= 14);
+		boolean hasSpecial   = !password.matches("[A-Za-z0-9 ]*");
+		boolean hasUppercase = !password.equals(password.toLowerCase());
+		boolean hasLowercase = !password.equals(password.toUpperCase());
+		
+		return validLength & hasSpecial & hasUppercase & hasLowercase;
+	}
 }

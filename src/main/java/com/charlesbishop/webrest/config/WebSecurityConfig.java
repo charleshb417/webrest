@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    	
+
     	// Get Users from DB
     	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		AppUserDAO userDAO = context.getBean(AppUserDAO.class);
@@ -39,9 +39,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	
         http
 	        .authorizeRequests()
-	        .antMatchers("/resources/**", "/webjars/**", "/login*").permitAll() 
+	        .antMatchers("/resources/**", "/webjars/**", "/login*", "/signup*").permitAll() 
 	        .anyRequest().authenticated()
             .and()
             .formLogin()

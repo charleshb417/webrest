@@ -26,11 +26,16 @@ public class AppUserDAO {
 	}
 	
 	public Serializable save(AppUser u) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		Serializable id = session.save(u);
-		tx.commit();
-		session.close();
-		return id;
+		try {
+			Session session = this.sessionFactory.openSession();
+			Transaction tx = session.beginTransaction();
+			Serializable id = session.save(u);
+			tx.commit();
+			session.close();
+			return id;	
+		}
+		catch (Exception e){
+			return null;
+		}
 	}
 }
