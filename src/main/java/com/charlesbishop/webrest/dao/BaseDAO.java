@@ -3,8 +3,6 @@ package com.charlesbishop.webrest.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import com.charlesbishop.webrest.model.Vacant;
-
 /*
  * This interface provides the basic CRUD operations
  * required for a DAO class.

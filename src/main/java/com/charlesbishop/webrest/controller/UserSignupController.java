@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.charlesbishop.webrest.config.WebSecurityConfig;
 import com.charlesbishop.webrest.model.AppUser;
 import com.charlesbishop.webrest.util.UserCreationUtil;
 

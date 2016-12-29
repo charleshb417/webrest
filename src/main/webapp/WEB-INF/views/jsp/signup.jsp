@@ -44,6 +44,7 @@
 				<li>Must have at least one special character</li>
 			</ul>
 		</div>
+		<a href="/webrest/login">Login</a>
   </div>
 </body>
 </html>

@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.charlesbishop.webrest.model.Crime;
 import com.charlesbishop.webrest.model.Vacant;
 import com.charlesbishop.webrest.util.QueryUtil;
 

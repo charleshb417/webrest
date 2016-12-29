@@ -28,12 +28,13 @@
 			         <td><input type='password' name='password' placeholder='Password' /></td>
 			      </tr>
 			      <tr>
-			         <td><input name="submit" class="btn btn-primary btn-sm" type="submit" value="submit" /></td>
+			         <td><input name="submit" class="btn btn-primary btn-sm" type="submit" value="Submit" /></td>
 			      </tr>
 			   </table>
 			   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
 		</div>
+		<a href="/webrest/signup">Signup</a>
   </div>
 </body>
 </html>

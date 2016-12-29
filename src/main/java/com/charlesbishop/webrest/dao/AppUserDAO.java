@@ -38,4 +38,13 @@ public class AppUserDAO {
 			return null;
 		}
 	}
+	
+	public AppUser get(String username) {
+		Session session = this.sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		Object user = session.get(AppUser.class, username);
+		tx.commit();
+		session.close();
+		return (AppUser) user;
+	}
 }
