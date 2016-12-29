@@ -27,4 +27,4 @@ $ mysql> source <path>/<to>/src/main/resources/createDB.sql
 $ mvn clean jetty:run
 ```
 
-5) Go to http://localhost:8080/webrest. Log in using the credentials "user" and "password".
+5) Go to http://localhost:8080/webrest. Log in using the default credentials "user" and "password". You can also click the "signup" link and create your own account.
