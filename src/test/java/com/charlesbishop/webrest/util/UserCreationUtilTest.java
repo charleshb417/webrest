@@ -32,6 +32,45 @@ public class UserCreationUtilTest {
 		if (!pass){
 			fail();
 		}
-		
+	}
+	
+	@Test
+	public void testPasswordIsValid(){
+		String password = "Application1!";
+		if (UserCreationUtil.passwordIsValid(password) == false){
+			fail();
+		}
+	}
+	
+	@Test
+	public void testPasswordIsTooLong(){
+		String password = "Application123!";
+		if (UserCreationUtil.passwordIsValid(password) == true){
+			fail();
+		}
+	}
+	
+	@Test
+	public void testPasswordIsMissingSpecialChar(){
+		String password = "Application";
+		if (UserCreationUtil.passwordIsValid(password) == true){
+			fail();
+		}
+	}
+	
+	@Test
+	public void testPasswordIsMissingUppercase(){
+		String password = "application1!";
+		if (UserCreationUtil.passwordIsValid(password) == true){
+			fail();
+		}
+	}
+	
+	@Test
+	public void testPasswordIsMissingLowercase(){
+		String password = "APPLICATION1!";
+		if (UserCreationUtil.passwordIsValid(password) == true){
+			fail();
+		}
 	}
 }
