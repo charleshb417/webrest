@@ -18,6 +18,7 @@ public class NeighborhoodDAOImpl implements NeighborhoodDAO {
         this.sessionFactory = sessionFactory;
     }
     
+	@SuppressWarnings("unchecked")
 	public List<Neighborhood> list(int pageNumber, int perPage) {
 		Session session = this.sessionFactory.openSession();		
 		Query query = session.createQuery("from Neighborhood");
@@ -57,7 +58,7 @@ public class NeighborhoodDAOImpl implements NeighborhoodDAO {
 		return (Neighborhood) neighborhood;
 	}
 
-	public Class getModelClass() {
+	public Class<Neighborhood> getModelClass() {
 		return Neighborhood.class;
 	}
 

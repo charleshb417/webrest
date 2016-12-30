@@ -28,5 +28,5 @@ public interface BaseDAO<T, U> {
 	public boolean delete(T object);
 	
 	// Provide a means to retrieve the Model class from a DAO class
-	public Class getModelClass();
+	public Class<T> getModelClass();
 }

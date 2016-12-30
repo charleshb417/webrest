@@ -59,7 +59,7 @@ public class CrimeDAOImpl implements CrimeDAO {
 		return personList;
 	}
 
-	public Class getModelClass() {
+	public Class<Crime> getModelClass() {
 		return Crime.class;
 	}
 

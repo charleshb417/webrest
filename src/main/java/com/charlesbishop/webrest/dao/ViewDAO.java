@@ -18,5 +18,5 @@ public interface ViewDAO<T, U> {
 	public T get(U id);
 	
 	// Provide a means to retrieve the Model class from a DAO class
-	public Class getModelClass();
+	public Class<T> getModelClass();
 }

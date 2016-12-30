@@ -59,7 +59,7 @@ public class VacantDAOImpl implements VacantDAO {
 		return vacantList;
 	}
 	
-	public Class getModelClass() {
+	public Class<Vacant> getModelClass() {
 		return Vacant.class;
 	}
 

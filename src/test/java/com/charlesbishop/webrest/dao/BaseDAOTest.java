@@ -57,7 +57,7 @@ public class BaseDAOTest {
 		CrimeDAO crimeDAO = context.getBean(CrimeDAO.class);
 		
 		// Update Crime object in the database
-		boolean b = crimeDAO.update(testObj);
+		crimeDAO.update(testObj);
 
 		// Get the object from the database
 		Crime retrievedCrime = crimeDAO.get(testingKey);
@@ -72,7 +72,7 @@ public class BaseDAOTest {
 		CrimeDAO crimeDAO = context.getBean(CrimeDAO.class);
 		
 		// Update Crime object in the database
-		boolean b = crimeDAO.delete(testObj);
+		crimeDAO.delete(testObj);
 
 		// Get the object from the database
 		Crime retrievedCrime = crimeDAO.get(testingKey);
