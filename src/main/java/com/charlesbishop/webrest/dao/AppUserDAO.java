@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 
 import com.charlesbishop.webrest.model.AppUser;
 
-public class AppUserDAO {
+public class AppUserDAO implements BaseDAO<AppUser, String> {
 	
 	private SessionFactory sessionFactory;
 
@@ -46,5 +46,33 @@ public class AppUserDAO {
 		tx.commit();
 		session.close();
 		return (AppUser) user;
+	}
+
+
+	public boolean update(AppUser object) {
+		Session session = this.sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		session.update(object);
+		tx.commit();
+		session.close();
+		return true;
+	}
+
+	public boolean delete(AppUser object) {
+		Session session = this.sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		session.delete(object);
+		tx.commit();
+		session.close();
+		return true;
+	}
+	
+	// Pagination not neccessary for Users
+	public List<AppUser> list(int pageNumber, int perPage) {
+		return list();
+	}
+
+	public Class<AppUser> getModelClass() {
+		return AppUser.class;
 	}
 }
