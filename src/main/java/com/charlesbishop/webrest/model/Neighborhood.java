@@ -11,6 +11,9 @@ public class Neighborhood extends ObjModel {
 	@Id
 	@Column(name="neighborhood")
 	private String neighborhood;
+
+	@Column(name="district")
+	private String district;
 	
 	@Column(name="numCrimes")
 	private int numCrimes;
@@ -26,6 +29,14 @@ public class Neighborhood extends ObjModel {
 		this.neighborhood = neighborhood;
 	}
 
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+	
 	public int getNumCrimes() {
 		return numCrimes;
 	}
@@ -45,7 +56,8 @@ public class Neighborhood extends ObjModel {
 	@Override
 	public String toString() {
 		return "{\"neighborhood\": \"" + neighborhood + "\","
-				+"\"numCrimes\": \"" + numCrimes + "\","
-				+"\"numVacants\": \"" + numVacants + "\"}";
+				+"\"district\": \"" + district + "\","
+				+"\"numCrimes\": " + numCrimes + ","
+				+"\"numVacants\": " + numVacants + "}";
 	}
 }
