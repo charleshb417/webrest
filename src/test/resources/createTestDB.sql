@@ -91,6 +91,6 @@ SET CrimeDate = STR_TO_DATE(@b,'%m/%d/%Y');
 -- Create Neighborhoods View
 --
 CREATE OR REPLACE VIEW neighborhood
-AS SELECT Neighborhood, COUNT(CrimeID) as 'NumCrimes', 
+AS SELECT Neighborhood, District, COUNT(CrimeID) as 'NumCrimes', 
 (SELECT COUNT(ReferenceID) FROM vacant where Neighborhood=crime.Neighborhood) as 'NumVacants' 
-FROM crime GROUP BY Neighborhood
+FROM crime WHERE Neighborhood != '' GROUP BY Neighborhood
