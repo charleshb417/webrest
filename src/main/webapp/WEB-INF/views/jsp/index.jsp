@@ -28,7 +28,7 @@
 					</i>
 				</div>
 				<div class="toolbarContent" ng-show="collapsed.dataset">
-					<select ng-model="tableSelection" ng-options="x for x in availableTableSelections"></select>
+					<select class="contentObj" ng-model="tableSelection" ng-options="x for x in availableTableSelections"></select>
 				</div>
 			</div>
 			
@@ -40,18 +40,18 @@
 					</i>
 				</div>
 				<div class="toolbarContent" ng-show="collapsed.dashboard">
-					<select ng-model="dashboardSelection" ng-options="x for x in availableDashboardSelections"></select><br/>
+					<select class="contentObj" ng-model="dashboardSelection" ng-options="x for x in availableDashboardSelections"></select><br/>
 					<div class="animate-switch-container" ng-switch on="dashboardSelection">
 						<div class="animate-switch" ng-switch-when="Frequency Chart">
 							<span class="toolbarLabel">Frequency Key:</span><br/>
-							<select ng-model="$parent.currentBubbleChartKey[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
+							<select class="contentObj" ng-model="$parent.currentBubbleChartKey[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
 						</div>
 						<div class="animate-switch" ng-switch-when="Adjacency Matrix">
 							<span class="toolbarLabel">X-Axis:</span><br/>
-							<select ng-model="$parent.adjacencyKeyX[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
+							<select class="contentObj" ng-model="$parent.adjacencyKeyX[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
 							
 							<span class="toolbarLabel">Y-Axis</span><br/>
-							<select ng-model="$parent.adjacencyKeyY[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
+							<select class="contentObj" ng-model="$parent.adjacencyKeyY[tableSelection]" ng-options="x for x in bubblechartKeys[tableSelection]"></select><br/>
 						</div>
 					</div>
 				</div>
@@ -110,11 +110,8 @@
 	<script src="<c:url value='./resources/static/js/service/crime_service.js' />"></script>
 	<script src="<c:url value='./resources/static/js/service/vacant_service.js' />"></script>
 	<script src="<c:url value='./resources/static/js/service/neighborhood_service.js' />"></script>
-	<script src="<c:url value='./resources/static/js/controller/navbar_controller.js' />"></script>
 	<script src="<c:url value='./resources/static/js/controller/layout_controller.js' />"></script>
 	<script src="<c:url value='./resources/static/js/directive/bubblechart.js' />"></script>
 	<script src="<c:url value='./resources/static/js/directive/adjacency.js' />"></script>
-	<script src="<c:url value='./resources/static/js/directive/linechart.js' />"></script>
-	<script src="<c:url value='./resources/static/js/directive/timechart.js' />"></script>
 </body>
 </html>

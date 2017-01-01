@@ -65,6 +65,10 @@
 	backround-color: #452249;
 }
 
+.contentObj {
+	margin-left:25px;	
+}
+
 .toolbarLabel {
 	color: #fff;
 	padding-left: 50px;
