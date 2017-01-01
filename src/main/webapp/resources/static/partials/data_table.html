@@ -28,8 +28,17 @@
 	       			<td title="'NoticeDate'" sortable="'noticeDate'">{{vacant.noticeDate}}</td>
 	       			<td title="'Neighborhood'" sortable="'neighborhood'">{{vacant.neighborhood}}</td>
 	       			<td title="'PoliceDistrict'" sortable="'policeDistrict'">{{vacant.policeDistrict}}</td>
-	       			<td title="'CouncilDistrict'" sortable="'councilDistrict'">{{vacant.councilDistrict}}</td>
 	       			<td title="'Location'" sortable="'location'">{{vacant.location}}</td>	
+		    	</tr>
+			</table>
+			
+			<table ng-table="tableParams.neighborhoods" class="table animate-switch" ng-switch-when="neighborhoods"
+			 show-filter="true">
+				<tr ng-repeat="neighborhood in $data">
+					<td title="'Neighborhood'" sortable="'neighborhood'">{{neighborhood.neighborhood}}</td>
+	       			<td title="'District'" sortable="'district'">{{neighborhood.district}}</td>
+	       			<td title="'NumCrimes'" sortable="'numCrimes'">{{neighborhood.numCrimes}}</td>
+	       			<td title="'NumVacants'" sortable="'numVacants'">{{neighborhood.numVacants}}</td>
 		    	</tr>
 			</table>
 		</div>

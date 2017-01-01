@@ -63,10 +63,12 @@
 				</div>
 			</div>
 			<div class="detailsView">
-				<span class="toolbarLabel">Current Data: {{tableSelection.charAt(0).toUpperCase() + tableSelection.slice(1)}}</span><br/>
-				<span class="toolbarLabel">Current View: </span><br/>
-				<span class="toolbarLabel">{{dashboardSelection}}</span><br/>
-				<span class="toolbarLabel">Quantity: {{this[tableSelection].length}}</span>
+				<span class="toolbarLabel">Current Data:</span><br/>
+				<span class="toolbarLabel labelValue">{{tableSelection.charAt(0).toUpperCase() + tableSelection.slice(1)}}</span><br/>
+				<span class="toolbarLabel">Current View:</span><br/>
+				<span class="toolbarLabel labelValue">{{dashboardSelection}}</span><br/>
+				<span class="toolbarLabel">Quantity:</span><br/>
+				<span class="toolbarLabel labelValue">{{this[tableSelection].length}}</span>
 			</div>
 		</div>
 		
@@ -107,6 +109,7 @@
 	<script src="<c:url value='./resources/static/js/app.js' />"></script>
 	<script src="<c:url value='./resources/static/js/service/crime_service.js' />"></script>
 	<script src="<c:url value='./resources/static/js/service/vacant_service.js' />"></script>
+	<script src="<c:url value='./resources/static/js/service/neighborhood_service.js' />"></script>
 	<script src="<c:url value='./resources/static/js/controller/navbar_controller.js' />"></script>
 	<script src="<c:url value='./resources/static/js/controller/layout_controller.js' />"></script>
 	<script src="<c:url value='./resources/static/js/directive/bubblechart.js' />"></script>
