@@ -1,5 +1,5 @@
 'use strict';
-angular.module('app').controller('LayoutController', ['$scope', '$uibModal', 'ngTableParams', 'CrimeService', 'VacantService', function($scope, $uibModal, NgTableParams, CrimeService, VacantService) {
+angular.module('app').controller('LayoutController', ['$scope', '$q', '$uibModal', 'ngTableParams', 'CrimeService', 'VacantService', function($scope, $q, $uibModal, NgTableParams, CrimeService, VacantService) {
 
 	var defaultPageNumber = 0;
 	var defaultPerPage = 0;
@@ -19,10 +19,6 @@ angular.module('app').controller('LayoutController', ['$scope', '$uibModal', 'ng
 	$scope.availableTableSelections = ['crimes', 'vacants'];
 	$scope.tableSelection = $scope.availableTableSelections[0];
 	$scope.isGridTableOpen = true;
-	
-	// Pre-populate Crimes and Vacants from database
-	listCrimes(defaultPageNumber, defaultPerPage);
-	listVacants(defaultPageNumber, defaultPerPage);
 	
 	// Parameters for table
 	$scope.tableParams = {
@@ -44,45 +40,24 @@ angular.module('app').controller('LayoutController', ['$scope', '$uibModal', 'ng
 	$scope.adjacencyKeyX = { crimes: $scope.bubblechartKeys.crimes[0], vacants: $scope.bubblechartKeys.vacants[0] };
 	$scope.adjacencyKeyY = { crimes: $scope.bubblechartKeys.crimes[1], vacants: $scope.bubblechartKeys.vacants[1] };
 	
-    function listCrimes(pageNumber, perPage){
-        CrimeService.listCrimes(pageNumber, perPage)
-            .then(
-            function(d) {
-            	$scope.crimes = d;
-            	$scope.tableParams.crimes = new NgTableParams({}, { dataset: $scope.crimes });
-            	crimesComplete = true;
-            	removeOverlayWhenComplete();
-            },
-            function(errResponse){
-                console.error('Error while fetching Crimes');
-            }
-        );
-    }
- 
-    function listVacants(pageNumber, perPage){
-        VacantService.listVacants(pageNumber, perPage)
-            .then(
-            function(d) {
-            	$scope.vacants = d;
-            	$scope.tableParams.vacants = new NgTableParams({}, { dataset: $scope.vacants });
-            	vacantsComplete = true;
-            	removeOverlayWhenComplete();
-            },
-            function(errResponse){
-                console.error('Error while fetching Vacants');
-            }
-        );
+    function listAllData(pageNumber, perPage){
+    	$q.all([
+    	        VacantService.listVacants(pageNumber, perPage), 
+    	        CrimeService.listCrimes(pageNumber, perPage)])
+    	.then(function(results){
+    		$scope.vacants = results[0];
+    		$scope.crimes = results[1];
+    		removeOverlayWhenComplete();
+    	});
     }
     
     function updateTableParams(){
     	$scope.tableParams = new NgTableParams({}, { dataset: $scope.crimes });
     }
     
-    // When vacants and crimes are complete, remove overlay
+    // Remove loading overlay
     function removeOverlayWhenComplete(){
-    	if(vacantsComplete && crimesComplete){
-    		$scope.overlayClass = '';
-    	}
+    	$scope.overlayClass = '';
     }
     
     $scope.openDataModal = function(){
@@ -108,4 +83,7 @@ angular.module('app').controller('LayoutController', ['$scope', '$uibModal', 'ng
             }
           });
     }
+    
+	// Pre-populate data from database
+	listAllData(defaultPageNumber, defaultPerPage);
 }]);
