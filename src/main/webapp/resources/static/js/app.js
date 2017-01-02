@@ -2,6 +2,10 @@
 
 var App = angular.module('app',['ngTable', 'angular-loading-bar', 'ui.bootstrap']);
 
+App.config(['$qProvider', function ($qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
+}]);
+
 /*
  * Global utility functions
  */

@@ -107,7 +107,7 @@ angular.module('app').controller('LayoutController', ['$scope', '$q', '$uibModal
                 $scope.tableParams = tableParams;
                 
             	$scope.ok = function () {
-                	$uibModalInstance.dismiss('cancel');
+                	$uibModalInstance.dismiss();
                 }
             }
           });
@@ -120,7 +120,7 @@ angular.module('app').controller('LayoutController', ['$scope', '$q', '$uibModal
             templateUrl: './resources/static/partials/about.html',
             controller: function($scope, $uibModalInstance) {
                 $scope.ok = function () {
-                	$uibModalInstance.dismiss('cancel');
+                	$uibModalInstance.dismiss();
                 }
             }
           });
