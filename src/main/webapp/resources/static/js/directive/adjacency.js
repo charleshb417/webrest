@@ -123,17 +123,10 @@ angular.module('app').directive('adjacency', function($window) {
 				});
 	
 				data.links.forEach(function(link) {
-					matrix[link.source][link.target].z += link.value;
 					matrix[link.target][link.source].z += link.value;
-					matrix[link.source][link.source].z += link.value;
-					matrix[link.target][link.target].z += link.value;
 					nodes[link.source].count += link.value;
 					nodes[link.target].count += link.value;	
 				});
-			
-				// Zero out the diagonal
-				for (var i=0; i<matrix.length; i++)
-					matrix[i][i] = 0;
 				
 				x.domain(d3.range(n).sort( function(a, b) {
 							return d3.ascending(nodes[a].name,
@@ -194,7 +187,15 @@ angular.module('app').directive('adjacency', function($window) {
 								tip.show(d);
 							}).on("mouseout", function(d) {
 								tip.hide(d);
-							});
+							}).on("click", function(d){
+								var keys = [scope.adjacencyKeyX[attrs.chartData], scope.adjacencyKeyY[attrs.chartData]];
+								var values = [nodes[d.x].name, nodes[d.y].name];
+					        	scope.openFilteredTable({
+					        		table: attrs.chartData,
+					        		keys: keys,
+					        		values: values
+					        	});
+					        });
 				}
 	
 				function order(value) {
