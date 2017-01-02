@@ -57,7 +57,7 @@
 				</div>
 			</div>
 			<div class="toolbarSection">
-				<div class="toolbarLabel mainLabel clickable" ng-click="openDataModal();">
+				<div class="toolbarLabel mainLabel clickable" ng-click="openFullTable();">
 					View Data
 					<i class="pull-right glyphicon glyphicon-list"></i>
 				</div>

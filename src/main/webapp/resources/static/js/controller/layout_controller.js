@@ -55,20 +55,18 @@ angular.module('app').controller('LayoutController', ['$scope', '$q', '$uibModal
     	$scope.overlayClass = '';
     }
     
-    $scope.openDataModal = function(){
+    $scope.openFullTable = function(){
+    	$scope.openDataModal($scope[ $scope.tableSelection ]);
+    }
+    
+    $scope.openDataModal = function(data){
         var modalInstance = $uibModal.open({
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
             templateUrl: './resources/static/partials/data_table.html',
             size: 'lg',
             resolve: {
-            	tableParams: function(){
-            		return {
-                			crimes: new NgTableParams({}, { dataset: $scope.crimes }),
-                			vacants: new NgTableParams({}, { dataset: $scope.vacants }),
-                			neighborhoods: new NgTableParams({}, { dataset: $scope.neighborhoods })
-                	}
-            	},
+            	tableParams: new NgTableParams({}, { dataset: data }),
             	tableSelection: function(){
             		return $scope.tableSelection;
             	}

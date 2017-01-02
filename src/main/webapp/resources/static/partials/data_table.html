@@ -4,7 +4,7 @@
 <div class="modal-body">
 	<div id="tableControls">			
 		<div class="animate-switch-container" ng-switch on="tableSelection">
-			<table ng-table="tableParams.crimes" class="table animate-switch" ng-switch-when="crimes"
+			<table ng-table="tableParams" class="table animate-switch" ng-switch-when="crimes"
 			 show-filter="true">
 				<tr ng-repeat="crime in $data">
 					<td title="'CrimeID'" sortable="'crimeID'">{{crime.crimeID}}</td>
@@ -18,7 +18,7 @@
 		    	</tr>
 			</table>
 			
-			<table ng-table="tableParams.vacants" class="table animate-switch" ng-switch-when="vacants"
+			<table ng-table="tableParams" class="table animate-switch" ng-switch-when="vacants"
 			 show-filter="true">
 				<tr ng-repeat="vacant in $data">
 					<td title="'ReferenceID'" sortable="'referenceID'">{{vacant.referenceID}}</td>
@@ -32,7 +32,7 @@
 		    	</tr>
 			</table>
 			
-			<table ng-table="tableParams.neighborhoods" class="table animate-switch" ng-switch-when="neighborhoods"
+			<table ng-table="tableParams" class="table animate-switch" ng-switch-when="neighborhoods"
 			 show-filter="true">
 				<tr ng-repeat="neighborhood in $data">
 					<td title="'Neighborhood'" sortable="'neighborhood'">{{neighborhood.neighborhood}}</td>
