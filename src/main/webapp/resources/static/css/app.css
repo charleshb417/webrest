@@ -13,6 +13,10 @@
 	padding-left:350px;
 }
 
+.pullRight {
+	float:right;
+}
+
 .contentView {
 	padding-top:25px;
 }

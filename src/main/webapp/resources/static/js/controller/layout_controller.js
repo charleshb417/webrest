@@ -59,6 +59,37 @@ angular.module('app').controller('LayoutController', ['$scope', '$q', '$uibModal
     	$scope.openDataModal($scope[ $scope.tableSelection ]);
     }
     
+    $scope.openFilteredTable = function(params){
+    	// Expects a "table" property, "keys" array, and "values" array. the keys and values arrays must
+    	// be in the same order
+    	if (params.hasOwnProperty('table') && params.hasOwnProperty('keys') && params.hasOwnProperty('values')){
+    		
+    		var keys = params.keys;
+    		var values = params.values;
+    		var tmpData = [];
+    		var tmpVal;
+    		var i, j;
+    		var addObject;
+    		
+    		for (i=0; i<$scope[params.table].length; i++){
+    			addObject = true;
+    			
+    			//Iterate through the keys to check that all expected values match
+    			for (j=0; j<keys.length; j++){
+    				tmpVal = $scope[params.table][i][keys[j]];
+    				if (tmpVal != values[j]){
+    					addObject = false;
+    				}
+    			}
+    			
+    			if (addObject){
+    				tmpData.push($scope[params.table][i]);
+    			}
+    		}
+    		$scope.openDataModal(tmpData);
+    	}
+    }
+    
     $scope.openDataModal = function(data){
         var modalInstance = $uibModal.open({
             ariaLabelledBy: 'modal-title',

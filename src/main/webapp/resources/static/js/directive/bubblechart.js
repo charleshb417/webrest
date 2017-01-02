@@ -83,6 +83,13 @@ angular.module('app').directive('bubblechart', function($window) {
 			        .on("mouseout",  function(d) {
 			        	d3.select(this).classed("activeBubble", false);
 			        	tip.hide(d);
+			        })
+			        .on("click", function(d){
+			        	scope.openFilteredTable({
+			        		table: attrs.chartData,
+			        		keys: [scope.currentBubbleChartKey[attrs.chartData]],
+			        		values: [d.key]
+			        	});
 			        });
 
 			    //format the text for each bubble
