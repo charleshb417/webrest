@@ -67,7 +67,7 @@ public class AppUserDAO implements BaseDAO<AppUser, String> {
 		return true;
 	}
 	
-	// Pagination not neccessary for Users
+	// Pagination not necessary for Users
 	public List<AppUser> list(int pageNumber, int perPage) {
 		return list();
 	}

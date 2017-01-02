@@ -8,6 +8,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.charlesbishop.webrest.dao.AppUserDAO;
 import com.charlesbishop.webrest.model.AppUser;
 
+/**
+ * @author charlie
+ * This utility class contains helper methods that can assist in the creation of an AppUser object
+ */
 public class UserCreationUtil {
 
 	private final static String ROLE_USER = "USER";

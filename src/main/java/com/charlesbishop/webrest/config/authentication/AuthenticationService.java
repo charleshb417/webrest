@@ -13,6 +13,10 @@ import org.springframework.stereotype.Service;
 import com.charlesbishop.webrest.dao.AppUserDAO;
 import com.charlesbishop.webrest.model.AppUser;
 
+/**
+ * @author charlie
+ * This service checks if a user is valid against Hibernate
+ */
 @Service
 public class AuthenticationService implements UserDetailsService {
 
