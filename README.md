@@ -19,7 +19,7 @@ MySQL credentials there. **Do not commit this file.**
 3) Run the MySql script at src/main/resources/createDB.sql
 ```sh
 $ cd src/main/resources
-$ mysql> source <path>/<to>/src/main/resources/createDB.sql
+$ mysql -u[user] < createDB.sql
 ```
 
 4) In the directory that contains pom.xml, run Jetty. This will be the only step needed to re-run the application at a later date.
