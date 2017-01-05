@@ -15,28 +15,28 @@ import javax.persistence.Table;
 public class Crime extends ObjModel {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="crimeID")
+	@Column(name="CrimeID")
 	private int crimeID;
 	
-	@Column(name="crimeDate")
+	@Column(name="CrimeDate")
 	private Date crimeDate;
 	
-	@Column(name="crimeCode")
+	@Column(name="CrimeCode")
 	private String crimeCode;
 	
-	@Column(name="location")
+	@Column(name="Location")
 	private String location;
 	
-	@Column(name="description")
+	@Column(name="Description")
 	private String description;
 	
-	@Column(name="weapon")
+	@Column(name="Weapon")
 	private String weapon;
 	
-	@Column(name="district")
+	@Column(name="District")
 	private String district;
 	
-	@Column(name="neighborhood")
+	@Column(name="Neighborhood")
 	private String neighborhood;
 	
 	public int getCrimeID() {

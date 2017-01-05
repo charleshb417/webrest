@@ -11,31 +11,31 @@ import javax.persistence.Table;
 @Table(name="Vacant")
 public class Vacant extends ObjModel {
 	@Id
-	@Column(name="referenceID", unique=true)
+	@Column(name="ReferenceID", unique=true)
 	private String referenceID;
 	
-	@Column(name="block")
+	@Column(name="Block")
 	private String block;
 	
-	@Column(name="lot")
+	@Column(name="Lot")
 	private String lot;
 	
-	@Column(name="buildingAddress")
+	@Column(name="BuildingAddress")
 	private String buildingAddress;
 	
-	@Column(name="noticeDate")
+	@Column(name="NoticeDate")
 	private Date noticeDate;
 	
-	@Column(name="neighborhood")
+	@Column(name="Neighborhood")
 	private String neighborhood;
 	
-	@Column(name="policeDistrict")
+	@Column(name="PoliceDistrict")
 	private String policeDistrict;
 	
-	@Column(name="councilDistrict")
+	@Column(name="CouncilDistrict")
 	private int councilDistrict;
 	
-	@Column(name="location")
+	@Column(name="Location")
 	private String location;
 	
 	public String getReferenceID() {

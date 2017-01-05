@@ -9,16 +9,16 @@ import javax.persistence.Table;
 @Table(name="Neighborhood")
 public class Neighborhood extends ObjModel {
 	@Id
-	@Column(name="neighborhood")
+	@Column(name="Neighborhood")
 	private String neighborhood;
 
-	@Column(name="district")
+	@Column(name="District")
 	private String district;
 	
-	@Column(name="numCrimes")
+	@Column(name="NumCrimes")
 	private int numCrimes;
 	
-	@Column(name="numVacants")
+	@Column(name="NumVacants")
 	private int numVacants;
 
 	public String getNeighborhood() {
