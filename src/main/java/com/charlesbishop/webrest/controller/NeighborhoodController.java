@@ -15,7 +15,7 @@ import com.charlesbishop.webrest.model.Neighborhood;
 
 @Controller
 @RequestMapping(value = "/rest/neighborhoods")
-public class NeighborhoodController implements BaseController<Neighborhood, String> {
+public class NeighborhoodController implements ReadOnlyController<Neighborhood, String> {
 
 	@RequestMapping(method = RequestMethod.GET)
     public @ResponseBody String list(@RequestParam(required=false) String pageNumber, 
@@ -58,20 +58,4 @@ public class NeighborhoodController implements BaseController<Neighborhood, Stri
 			return CRUDControllerHelper.MSG_GENERIC_ERROR;
 		}
     }
-
-	/*
-	 * Unimplemented methods
-	 */
-	public String create(Neighborhood obj) {
-		return null;
-	}
-	
-	public String update(String id, Neighborhood obj) {
-		return null;
-	}
-
-	public String delete(String id) {
-		return null;
-	}
-
 }
