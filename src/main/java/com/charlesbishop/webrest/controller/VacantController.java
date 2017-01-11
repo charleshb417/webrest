@@ -18,9 +18,10 @@ import com.charlesbishop.webrest.dao.VacantDAO;
 import com.charlesbishop.webrest.model.Vacant;
 
 @Controller
+@RequestMapping(value = "/rest/vacants")
 public class VacantController implements BaseController<Vacant, String>{
 	
-	@RequestMapping(value = "/rest/vacants", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
     public @ResponseBody String list(@RequestParam(required=false) String pageNumber, 
     		@RequestParam(required=false) String perPage) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
@@ -46,7 +47,7 @@ public class VacantController implements BaseController<Vacant, String>{
     }
 	
 	// Create a Vacant object
-	@RequestMapping(value = "/rest/vacants", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody String create(@Valid @RequestBody Vacant vacant) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		VacantDAO vacantDAO = context.getBean(VacantDAO.class);
@@ -62,7 +63,7 @@ public class VacantController implements BaseController<Vacant, String>{
 	}
 	
 	// Get Vacant by ID
-	@RequestMapping(value = "/rest/vacants/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody String get(@PathVariable("id") String id) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		VacantDAO vacantDAO = context.getBean(VacantDAO.class);
@@ -79,7 +80,7 @@ public class VacantController implements BaseController<Vacant, String>{
     }
 	
 	// Update a Vacant
-	@RequestMapping(value = "/rest/vacants/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public @ResponseBody String update(@PathVariable("id") String id, @RequestBody Vacant vacant){
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		VacantDAO vacantDAO = context.getBean(VacantDAO.class);
@@ -96,7 +97,7 @@ public class VacantController implements BaseController<Vacant, String>{
 	}
 	
 	// Delete a Vacant by ID
-	@RequestMapping(value = "/rest/vacants/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public @ResponseBody String delete(@PathVariable("id") String id) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		VacantDAO vacantDAO = context.getBean(VacantDAO.class);

@@ -14,9 +14,10 @@ import com.charlesbishop.webrest.dao.NeighborhoodDAO;
 import com.charlesbishop.webrest.model.Neighborhood;
 
 @Controller
+@RequestMapping(value = "/rest/neighborhoods")
 public class NeighborhoodController implements BaseController<Neighborhood, String> {
 
-	@RequestMapping(value = "/rest/neighborhoods", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
     public @ResponseBody String list(@RequestParam(required=false) String pageNumber, 
     		@RequestParam(required=false) String perPage) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
@@ -42,7 +43,7 @@ public class NeighborhoodController implements BaseController<Neighborhood, Stri
     }
 
 	// Get Neighborhoods by ID
-	@RequestMapping(value = "/rest/neighborhoods/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody String get(@PathVariable("id") String id) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		NeighborhoodDAO neighborhoodDAO = context.getBean(NeighborhoodDAO.class);

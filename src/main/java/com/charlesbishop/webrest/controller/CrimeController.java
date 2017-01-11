@@ -18,10 +18,11 @@ import com.charlesbishop.webrest.dao.CrimeDAO;
 import com.charlesbishop.webrest.model.Crime;
 
 @Controller
+@RequestMapping(value = "/rest/crimes")
 public class CrimeController implements BaseController<Crime, Integer> {
 	
 	// Get all Crimes
-	@RequestMapping(value = "/rest/crimes", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
     public @ResponseBody String list(@RequestParam(required=false) String pageNumber, 
     		@RequestParam(required=false) String perPage) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
@@ -52,7 +53,7 @@ public class CrimeController implements BaseController<Crime, Integer> {
     }
 	
 	// Create a Crime object
-	@RequestMapping(value = "/rest/crimes", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody String create(@Valid @RequestBody Crime crime) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		CrimeDAO crimeDAO = context.getBean(CrimeDAO.class);
@@ -68,7 +69,7 @@ public class CrimeController implements BaseController<Crime, Integer> {
 	}
 	
 	// Get Crime by ID
-	@RequestMapping(value = "/rest/crimes/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody String get(@PathVariable("id") Integer id) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		CrimeDAO crimeDAO = context.getBean(CrimeDAO.class);
@@ -85,7 +86,7 @@ public class CrimeController implements BaseController<Crime, Integer> {
     }
 	
 	// Update a Crime
-	@RequestMapping(value = "/rest/crimes/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public @ResponseBody String update(@PathVariable("id") Integer id, @RequestBody Crime crime){
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		CrimeDAO crimeDAO = context.getBean(CrimeDAO.class);
@@ -102,7 +103,7 @@ public class CrimeController implements BaseController<Crime, Integer> {
 	}
 	
 	// Delete a Crime by ID
-	@RequestMapping(value = "/rest/crimes/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public @ResponseBody String delete(@PathVariable("id") Integer id) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
 		CrimeDAO crimeDAO = context.getBean(CrimeDAO.class);
